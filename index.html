@@ -17,9 +17,6 @@
 
       //write the function that plays a single round of rps given the user and computer input as args
       function playRound(playerSelection, computerSelection) {
-        let tempString = playerSelection.toLowerCase();
-        playerSelection = tempString;
-
         if (playerSelection === computerSelection) {
           let result = "It's a tie!";
           return result;
@@ -51,10 +48,18 @@
           return result;
         }
       }
-
-      const computerSelection = getComputerChoice();
-      const playerSelection = prompt("Enter Rock, Paper, or Scissors:");
-      console.log(playRound(playerSelection, computerSelection));
+      //Write a function to loop and play five rounds of RPS
+      function game(){
+        for (let index = 0; index < 5; index++){
+          const computerSelection = getComputerChoice();
+          let playerSelection = prompt("Enter Rock, Paper, or Scissors:");
+          const tempString = playerSelection.toLowerCase();
+          playerSelection = tempString;
+          console.log(playRound(playerSelection,computerSelection));
+        }
+      }
+      
+      game();
     </script>
   </body>
 </html>
