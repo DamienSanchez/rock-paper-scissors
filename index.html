@@ -16,6 +16,8 @@
       }
 
       //write the function that plays a single round of rps given the user and computer input as args
+      let playerCounter = 0;
+      let computerCounter = 0;
       function playRound(playerSelection, computerSelection) {
         if (playerSelection === computerSelection) {
           let result = "It's a tie!";
@@ -25,19 +27,19 @@
           computerSelection === "scissors"
         ) {
           let result = "You win! Rock beats Scissors!";
-          return result;
+          return result, playerCounter++;
         } else if (
           playerSelection === "scissors" &&
           computerSelection === "paper"
         ) {
           let result = "You win! Scissors beats Paper!";
-          return result;
+          return result, playerCounter++;
         } else if (
           playerSelection === "paper" &&
           computerSelection === "rock"
         ) {
           let result = "You win! Paper beats Rock!";
-          return result;
+          return result, playerCounter++;
         } else {
           let result =
             "Oh no! You Lost! " +
@@ -45,7 +47,7 @@
             " beats " +
             playerSelection +
             "!";
-          return result;
+            return result, computerCounter++;
         }
       }
       //Write a function to loop and play five rounds of RPS
@@ -56,6 +58,19 @@
           const tempString = playerSelection.toLowerCase();
           playerSelection = tempString;
           console.log(playRound(playerSelection,computerSelection));
+        }
+        let result = ' ';
+        if (playerCounter === computerCounter){
+          result = 'Its all tied up!'
+          return console.log(result);
+        }else if(
+          playerCounter > computerCounter
+        ){
+           result ='You win the match!'
+           console.log(result);
+        }else{
+          result = "You lose! :()"
+          console.log(result);
         }
       }
       
