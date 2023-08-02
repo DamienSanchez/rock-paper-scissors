@@ -14,66 +14,66 @@
         let computerChoice = choices[randNum];
         return computerChoice;
       }
-
-      //write the function that plays a single round of rps given the user and computer input as args
       let playerCounter = 0;
       let computerCounter = 0;
+      //write the function that plays a single round of rps given the user and computer input as args
       function playRound(playerSelection, computerSelection) {
+        let results = "";
         if (playerSelection === computerSelection) {
-          let result = "It's a tie!";
-          return result;
+          results = "It's a tie!";
         } else if (
           playerSelection === "rock" &&
           computerSelection === "scissors"
         ) {
-          let result = "You win! Rock beats Scissors!";
-          return result, playerCounter++;
+          results = "You win! Rock beats Scissors!";
+          playerCounter++;
         } else if (
           playerSelection === "scissors" &&
           computerSelection === "paper"
         ) {
-          let result = "You win! Scissors beats Paper!";
-          return result, playerCounter++;
+          results = "You win! Scissors beats Paper!";
+          playerCounter++;
         } else if (
           playerSelection === "paper" &&
           computerSelection === "rock"
         ) {
-          let result = "You win! Paper beats Rock!";
-          return result, playerCounter++;
+          results = "You win! Paper beats Rock!";
+          playerCounter++;
         } else {
-          let result =
+          results =
             "Oh no! You Lost! " +
             computerSelection +
             " beats " +
             playerSelection +
             "!";
-            return result, computerCounter++;
+          computerCounter++;
         }
+        let score =
+          "Player: " + playerCounter + " | Computer: " + computerCounter;
+        return [results, score];
       }
       //Write a function to loop and play five rounds of RPS
-      function game(){
-        for (let index = 0; index < 5; index++){
+      function game() {
+        for (let index = 0; index < 5; index++) {
           const computerSelection = getComputerChoice();
           let playerSelection = prompt("Enter Rock, Paper, or Scissors:");
           const tempString = playerSelection.toLowerCase();
           playerSelection = tempString;
-          console.log(playRound(playerSelection,computerSelection));
+          console.log(playRound(playerSelection, computerSelection));
         }
-        let result = ' ';
-        if (playerCounter === computerCounter){
-          result = 'Its all tied up!'
+        let result = " ";
+        if (playerCounter === computerCounter) {
+          result = "Its all tied up!";
           return console.log(result);
-        }else if(
-          playerCounter > computerCounter
-        ){
-           result ='You win the match!'
-           console.log(result);
-        }else{
-          result = "You lose! :()"
+        } else if (playerCounter > computerCounter) {
+          result = "You win the match!";
+          console.log(result);
+        } else {
+          result = "You lose! :(";
           console.log(result);
         }
       }
-      
+
       game();
     </script>
   </body>
