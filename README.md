@@ -11,16 +11,15 @@ I will be taking notes on things that confused me or that gave me the Ah-ha! mom
 * By writing some psuedo code it actually helped!!
 * I notice that when taking user input that somtime is the word is in all caps it will defualt to the computer winning everytime.
     So to combat this before the user input in applied to the logic I converted it to all lower case to match what is in the array.
-* 
-* 
+* For me getting the logic right for the conter and having the counter be able to be used in multpul function was a challege... 
+    Dont be afriad to google!
 
 
 # What I learned:
 * How to write meaningful commit messages
 * 'Value' and 'value' are NOT the same data
-* 
-* 
-* 
+* How to declare a global scope var to be used in multiple function.
+* How to return multipule values from a function using arrays
 
 
 # Tools I used:
