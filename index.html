@@ -6,6 +6,13 @@
     <title>RPS Game | Javascript</title>
   </head>
   <body>
+    <div class="wrapper">
+      <button class="rock btn remove">Rock</button>
+      <button class="paper btn remove">Paper</button>
+      <button class="scissors btn remove">Scissors</button>
+      <div class="results remove"></div>
+      <div class="score remove"></div>
+    </div>
     <script>
       //Write a function to randomly select 'rock','paper',or 'scissors'
       function getComputerChoice() {
@@ -14,11 +21,15 @@
         let computerChoice = choices[randNum];
         return computerChoice;
       }
+      let results = "";
+      let score = "";
+      let playerSelection = "";
       let playerCounter = 0;
       let computerCounter = 0;
       //write the function that plays a single round of rps given the user and computer input as args
       function playRound(playerSelection, computerSelection) {
-        let results = "";
+    
+        
         if (playerSelection === computerSelection) {
           results = "It's a tie!";
         } else if (
@@ -48,33 +59,43 @@
             "!";
           computerCounter++;
         }
-        let score =
+        const scores = document.querySelector('.score')
+        const div = document.querySelector('.results');
+        div.textContent = results 
+        score =
           "Player: " + playerCounter + " | Computer: " + computerCounter;
-        return [results, score];
-      }
-      //Write a function to loop and play five rounds of RPS
-      function game() {
-        for (let index = 0; index < 5; index++) {
-          const computerSelection = getComputerChoice();
-          let playerSelection = prompt("Enter Rock, Paper, or Scissors:");
-          const tempString = playerSelection.toLowerCase();
-          playerSelection = tempString;
-          console.log(playRound(playerSelection, computerSelection));
+        scores.textContent = score
+        if(playerCounter == 5  || computerCounter == 5){
+          endGame();
         }
-        let result = " ";
-        if (playerCounter === computerCounter) {
-          result = "Its all tied up!";
-          return console.log(result);
-        } else if (playerCounter > computerCounter) {
-          result = "You win the match!";
-          console.log(result);
-        } else {
-          result = "You lose! :(";
-          console.log(result);
-        }
+        
+        
       }
+      
+      const buttons = Array.from(document.querySelectorAll('.btn'));
+      buttons.forEach(button => button.addEventListener('click', selectOption));
 
-      game();
+      function selectOption(){
+        if(this.classList[0] ===  'rock') playerSelection = "rock";
+        if(this.classList[0] ===  'paper') playerSelection = "paper";
+        if(this.classList[0] ===  'scissors') playerSelection = "scissors";
+        let computer = getComputerChoice();
+        playRound(playerSelection,computer)
+        
+      }
+      function endGame(){
+        const elements = Array.from(document.querySelectorAll('.remove'))
+        elements.forEach(element => element.remove())
+          const wrapper = document.querySelector('.wrapper')
+          const msg = document.createElement('div')
+        if(playerCounter === 5){
+          msg.textContent = "You Win"
+          wrapper.appendChild(msg)
+        }else{
+          msg.textContent = "Computer Win"
+          wrapper.appendChild(msg)
+        }
+      }
     </script>
   </body>
 </html>
